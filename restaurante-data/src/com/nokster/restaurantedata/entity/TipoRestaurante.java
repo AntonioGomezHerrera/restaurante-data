@@ -3,13 +3,14 @@
  */
 package com.nokster.restaurantedata.entity;
 
-import java.time.LocalDateTime;
+
+import java.util.List;
 
 /**
  * @author Nokster
  * Clase que representa una entidad de tipo restaurante en la base de datos
  */
-public class TipoRestaurante {
+public class TipoRestaurante extends CommonEntity {
 	
 	/**
 	 * Identificador del tipo de restaurante
@@ -22,15 +23,11 @@ public class TipoRestaurante {
 	/**
 	 * Fecha de creacion del tipo de restaurante
 	 */
-	private LocalDateTime fechaCreacion;
+
 	/**
-	 * Fecha de modificacion del tipo de restaurante
+	 * Restaurantes que pertenecen a un tipo de restaurante
 	 */
-	private LocalDateTime fechaModificacion;
-	/**
-	 * Estatus habilitado o deshabilitado del tipo de restaurante
-	 */
-	private boolean estatus;
+	private List<Restaurante> restaurantes;
 	/**
 	 * @return the idTipoRestaurante
 	 */
@@ -58,37 +55,16 @@ public class TipoRestaurante {
 	/**
 	 * @return the fechaCreacion
 	 */
-	public LocalDateTime getFechaCreacion() {
-		return fechaCreacion;
+	/**
+	 * @return the restaurantes
+	 */
+	public List<Restaurante> getRestaurantes() {
+		return restaurantes;
 	}
 	/**
-	 * @param fechaCreacion the fechaCreacion to set
+	 * @param restaurantes the restaurantes to set
 	 */
-	public void setFechaCreacion(LocalDateTime fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
-	/**
-	 * @return the fechaModificacion
-	 */
-	public LocalDateTime getFechaModificacion() {
-		return fechaModificacion;
-	}
-	/**
-	 * @param fechaModificacion the fechaModificacion to set
-	 */
-	public void setFechaModificacion(LocalDateTime fechaModificacion) {
-		this.fechaModificacion = fechaModificacion;
-	}
-	/**
-	 * @return the estatus
-	 */
-	public boolean isEstatus() {
-		return estatus;
-	}
-	/**
-	 * @param estatus the estatus to set
-	 */
-	public void setEstatus(boolean estatus) {
-		this.estatus = estatus;
+	public void setRestaurantes(List<Restaurante> restaurantes) {
+		this.restaurantes = restaurantes;
 	}
 }

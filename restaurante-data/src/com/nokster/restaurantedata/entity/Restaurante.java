@@ -7,7 +7,7 @@ package com.nokster.restaurantedata.entity;
  * @author Nokster
  * Clase que representa una entidad de restaurante en la bd
  */
-public class Restaurante {
+public class Restaurante extends CommonEntity {
 
 	/**
 	 * Identificador del restaurante

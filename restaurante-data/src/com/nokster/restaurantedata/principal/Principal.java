@@ -21,6 +21,9 @@ public class Principal {
 		// TODO Auto-generated method stub
 		try {
 			Connection conexionGenerada = ConnectionFactory.conectar();
+			if (conexionGenerada != null) {
+				System.out.println("La conexion ha sido exitosa");
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

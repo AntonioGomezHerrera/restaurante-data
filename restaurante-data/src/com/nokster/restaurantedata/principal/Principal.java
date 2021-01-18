@@ -48,21 +48,43 @@ public class Principal {
 
 		// ::::::::::::::::::::: Prueba de UPDATE
 		
+//		TipoRestaurante tipoRestaurante = new TipoRestaurante();
+//		tipoRestaurante.setIdTipoRestaurante(22);
+//		tipoRestaurante.setDescripcion("Griego");
+//		tipoRestaurante.setFechaModificacion(LocalDateTime.now());
+//		tipoRestaurante.setEstatus(false);
+
+//		try {
+//			int guardado = tipoRestauranteImpl.actualizar(tipoRestaurante);
+//
+//			// Si el tipo de restaurante se guardo en la bd
+//			if (guardado > 0) {
+//				System.out.println(
+//						"El tipo de Restaurante " + tipoRestaurante.getDescripcion() + " fue actualizado exitosamente");
+//			} else {
+//				System.err.println("Hubo un error al actualizar el tipo de restaurante");
+//			}
+//
+//		} catch (SQLException e) {
+//			System.err.println("Error: " + e.getMessage());
+//			e.printStackTrace();
+//		}
+		
+		//:::::::::::::: Prueba de DELETE
+		
 		TipoRestaurante tipoRestaurante = new TipoRestaurante();
 		tipoRestaurante.setIdTipoRestaurante(22);
 		tipoRestaurante.setDescripcion("Griego");
-		tipoRestaurante.setFechaModificacion(LocalDateTime.now());
-		tipoRestaurante.setEstatus(false);
-
+		
 		try {
-			int guardado = tipoRestauranteImpl.actualizar(tipoRestaurante);
+			int eliminado = tipoRestauranteImpl.eliminar(tipoRestaurante.getIdTipoRestaurante());
 
 			// Si el tipo de restaurante se guardo en la bd
-			if (guardado > 0) {
+			if (eliminado > 0) {
 				System.out.println(
-						"El tipo de Restaurante " + tipoRestaurante.getDescripcion() + " fue actualizado exitosamente");
+						"El tipo de Restaurante fue "+ tipoRestaurante.getDescripcion() +" eliminado exitosamente");
 			} else {
-				System.err.println("Hubo un error al actualizar el tipo de restaurante");
+				System.err.println("Hubo un error al eliminar el tipo de restaurante");
 			}
 
 		} catch (SQLException e) {

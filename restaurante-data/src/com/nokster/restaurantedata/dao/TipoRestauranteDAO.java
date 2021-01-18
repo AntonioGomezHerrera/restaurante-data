@@ -37,8 +37,9 @@ public interface TipoRestauranteDAO {
 	 * 
 	 * @param idTipoRestaurante identificador del tipo a eliminar
 	 * @return 1 o mas de en caso de ser exitoso, 0 en caso de no guardarlo
+	 * @throws SQLException Excepcion generada en caso de error al ejecutar la sentencia SQL
 	 */
-	int eliminar(int idTipoRestaurante);
+	int eliminar(int idTipoRestaurante) throws SQLException;
 	/**
 	 * Metodo que permite consultar los registros de tipos de restaurantes
 	 * @return lista de tipos de restaurantes 

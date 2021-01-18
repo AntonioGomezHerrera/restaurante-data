@@ -46,14 +46,15 @@ public class TipoRestauranteDAOImpl implements TipoRestauranteDAO {
 	}
 
 	@Override
-	public int eliminar(int idTipoRestaurante) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int eliminar(int idTipoRestaurante) throws SQLException {
+		String sql = "DELETE FROM tipo_restaurante WHERE idTipoRestaurante = "+ idTipoRestaurante +"";
+		int ejecutado = ConnectionFactory.ejecutarSQL(sql);
+		return ejecutado;
 	}
 
 	@Override
 	public List<TipoRestaurante> consultar() {
-		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM tipo_restaurante order by descripcion;";
 		return null;
 	}
 

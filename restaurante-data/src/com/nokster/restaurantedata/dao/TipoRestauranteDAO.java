@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.nokster.restaurantedata.entity.TipoRestaurante;
+import com.nokster.restaurantedata.myexceptions.RestauranteException;
 
 /**
  * @author Nokster Interface que representa el CRUD de transaccion para la tabla
@@ -52,6 +53,7 @@ public interface TipoRestauranteDAO {
 	 * @param idTipoRestaurante identificador del tipo
 	 * @return tipo de restaurante consultado o null
 	 * @throws SQLException Excepcion generada en caso de error al ejecutar la sentencia SQL
+	 * @throws RestauranteException Excepcion personalizada que genera un mensaje mas especifico
 	 */
-	TipoRestaurante consultarPorId(int idTipoRestaurante) throws SQLException;
+	TipoRestaurante consultarPorId(int idTipoRestaurante) throws SQLException, RestauranteException;
 }

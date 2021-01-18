@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 import com.nokster.restaurantedata.dao.impl.TipoRestauranteDAOImpl;
 import com.nokster.restaurantedata.entity.TipoRestaurante;
+import com.nokster.restaurantedata.myexceptions.RestauranteException;
 
 /**
  * @author Nokster Clase principal para probar la conexion a la bd
@@ -120,6 +121,9 @@ public class Principal {
 			}
 		} catch (SQLException e) {
 			System.err.println("Error: " + e.getMessage());
+			e.printStackTrace();
+		} catch (RestauranteException e) {
+			System.out.println(e.getErrorCode());
 			e.printStackTrace();
 		}
 	}

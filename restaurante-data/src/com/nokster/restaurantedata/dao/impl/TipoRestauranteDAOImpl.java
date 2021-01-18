@@ -11,6 +11,8 @@ import java.util.List;
 import com.nokster.restaurantedata.conecction.ConnectionFactory;
 import com.nokster.restaurantedata.dao.TipoRestauranteDAO;
 import com.nokster.restaurantedata.entity.TipoRestaurante;
+import com.nokster.restaurantedata.enums.CodigoEnum;
+import com.nokster.restaurantedata.myexceptions.RestauranteException;
 
 /**
  * @author Nokster Clase que implementa el CRUD y otros metodos personalizados
@@ -81,10 +83,21 @@ public class TipoRestauranteDAOImpl implements TipoRestauranteDAO {
 	}
 
 	@Override
-	public TipoRestaurante consultarPorId(int idTipoRestaurante) throws SQLException {
-		String sql = "SELECT * FROM tipo_restaurante WHERE idTipoRestaurante = " + idTipoRestaurante + ";";
+	public TipoRestaurante consultarPorId(int idTipoRestaurante) throws SQLException, RestauranteException {
+		String sql = "SELECT * ROM tipo_restaurante WHERE idTipoRestaurante = " + idTipoRestaurante + ";";
 
-		ResultSet rs = ConnectionFactory.ejecutarSQLSelect(sql);
+		ResultSet rs = null;
+
+		try {
+			rs = ConnectionFactory.ejecutarSQLSelect(sql);
+		} catch (Exception e) {
+			System.out.println(e.getClass().getCanonicalName());
+			if (e.getClass().getName().contains("SQLSyntaxErrorException")) {
+				throw new RestauranteException("Error de sintaxis en la sentencia " + sql,
+						CodigoEnum.SINTAXIS_ERROR_CODE);
+			}
+
+		}
 
 		TipoRestaurante tipoRestaurante = null;
 

@@ -3,6 +3,7 @@
  */
 package com.nokster.restaurantedata.principal;
 
+import java.util.*;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
@@ -21,10 +22,8 @@ public class Principal {
 
 		TipoRestauranteDAOImpl tipoRestauranteImpl = new TipoRestauranteDAOImpl();
 
-		
-
 		// ::::::::: Preba de INSERT
-		
+
 //		TipoRestaurante tipoRestaurante = new TipoRestaurante();
 //		tipoRestaurante.setDescripcion("Griego");
 //		tipoRestaurante.setFechaCreacion(LocalDateTime.now());
@@ -47,7 +46,7 @@ public class Principal {
 //		}
 
 		// ::::::::::::::::::::: Prueba de UPDATE
-		
+
 //		TipoRestaurante tipoRestaurante = new TipoRestaurante();
 //		tipoRestaurante.setIdTipoRestaurante(22);
 //		tipoRestaurante.setDescripcion("Griego");
@@ -69,24 +68,56 @@ public class Principal {
 //			System.err.println("Error: " + e.getMessage());
 //			e.printStackTrace();
 //		}
+
+		// :::::::::::::: Prueba de DELETE
+
+//		TipoRestaurante tipoRestaurante = new TipoRestaurante();
+//		tipoRestaurante.setIdTipoRestaurante(22);
+//		tipoRestaurante.setDescripcion("Griego");
+//		
+//		try {
+//			int eliminado = tipoRestauranteImpl.eliminar(tipoRestaurante.getIdTipoRestaurante());
+//
+//			// Si el tipo de restaurante se guardo en la bd
+//			if (eliminado > 0) {
+//				System.out.println(
+//						"El tipo de Restaurante fue "+ tipoRestaurante.getDescripcion() +" eliminado exitosamente");
+//			} else {
+//				System.err.println("Hubo un error al eliminar el tipo de restaurante");
+//			}
+//
+//		} catch (SQLException e) {
+//			System.err.println("Error: " + e.getMessage());
+//			e.printStackTrace();
+//		}
+
+		// :::::::::::::::: Prueba de select
 		
-		//:::::::::::::: Prueba de DELETE
+//		
+//		try {
+//			List<TipoRestaurante> tiposConsultados = tipoRestauranteImpl.consultar();
+//			
+//			for (TipoRestaurante tipoRestaurante : tiposConsultados) {
+//				System.out.println("ID: " + tipoRestaurante.getIdTipoRestaurante());
+//				System.out.println("DESCRIPCION: " + tipoRestaurante.getDescripcion());
+//				System.out.println("ESTATUS: " + tipoRestaurante.isEstatus() + "\n");
+//			}
+//		} catch (SQLException e) {
+//			System.err.println("Error: " + e.getMessage());
+//			e.printStackTrace();
+//		}
 		
-		TipoRestaurante tipoRestaurante = new TipoRestaurante();
-		tipoRestaurante.setIdTipoRestaurante(22);
-		tipoRestaurante.setDescripcion("Griego");
 		
+		// ::::::::::::::: Prueba de select where
 		try {
-			int eliminado = tipoRestauranteImpl.eliminar(tipoRestaurante.getIdTipoRestaurante());
-
-			// Si el tipo de restaurante se guardo en la bd
-			if (eliminado > 0) {
-				System.out.println(
-						"El tipo de Restaurante fue "+ tipoRestaurante.getDescripcion() +" eliminado exitosamente");
+			TipoRestaurante tiposConsultado = tipoRestauranteImpl.consultarPorId(16);
+			if (tiposConsultado != null) {
+				System.out.println("ID: " + tiposConsultado.getIdTipoRestaurante());
+				System.out.println("DESCRIPCION: " +tiposConsultado.getDescripcion());
+				System.out.println("ESTATUS: " + tiposConsultado.isEstatus());
 			} else {
-				System.err.println("Hubo un error al eliminar el tipo de restaurante");
+				System.err.println("No se encontro el tipo de restaurante que buscas . :(");
 			}
-
 		} catch (SQLException e) {
 			System.err.println("Error: " + e.getMessage());
 			e.printStackTrace();

@@ -43,13 +43,15 @@ public interface TipoRestauranteDAO {
 	/**
 	 * Metodo que permite consultar los registros de tipos de restaurantes
 	 * @return lista de tipos de restaurantes 
+	 * @throws SQLException Excepcion generada en caso de error al ejecutar la sentencia SQL
 	 */
-	List<TipoRestaurante> consultar();
+	List<TipoRestaurante> consultar() throws SQLException;
 	
 	/**
 	 * Metodo que permite consultar 1 registro de tipo restaurante por identificador
 	 * @param idTipoRestaurante identificador del tipo
 	 * @return tipo de restaurante consultado o null
+	 * @throws SQLException Excepcion generada en caso de error al ejecutar la sentencia SQL
 	 */
-	TipoRestaurante consultarPorId(int idTipoRestaurante);
+	TipoRestaurante consultarPorId(int idTipoRestaurante) throws SQLException;
 }

@@ -3,12 +3,15 @@
  */
 package com.nokster.restaurantedata.dao.impl;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.nokster.restaurantedata.conecction.ConnectionFactory;
 import com.nokster.restaurantedata.dao.RestauranteDAO;
 import com.nokster.restaurantedata.entity.Restaurante;
+import com.nokster.restaurantedata.entity.TipoRestaurante;
 import com.nokster.restaurantedata.myexceptions.RestauranteException;
 
 /**
@@ -49,15 +52,39 @@ public class RestauranteDAOImpl implements RestauranteDAO {
 
 	@Override
 	public int eliminar(int idRestaurante) throws SQLException {
-		String sql = "DELETE FROM restaurante where idRestaurante = "+ idRestaurante +"";
+		String sql = "DELETE FROM restaurante where idRestaurante = " + idRestaurante + "";
 		int ejecutado = ConnectionFactory.ejecutarSQL(sql);
 		return ejecutado;
 	}
 
 	@Override
 	public List<Restaurante> consultar() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "SELECT * FROM restaurante order by nombre;";
+
+		ResultSet rs = ConnectionFactory.ejecutarSQLSelect(sql);
+
+		List<Restaurante> restaurantes = new ArrayList<Restaurante>();
+
+		if (rs != null) {
+			while (rs.next()) {
+				Restaurante restaurante = new Restaurante();
+				restaurante.setNombre(rs.getNString("nombre"));
+				restaurante.setImagen(rs.getNString("imagen"));
+				restaurante.setEstatus(rs.getBoolean("estatus"));
+				restaurante.setFechaCreacion(rs.getTimestamp("fechaCreacion").toLocalDateTime());
+				restaurante.setFechaModificacion(rs.getTimestamp("fechaModificacion") != null
+						? rs.getTimestamp("fechaModificacion").toLocalDateTime()
+						: null);
+				restaurante.setSlogan(rs.getString("slogan"));
+				
+				TipoRestaurante tipoRestaurante = new TipoRestaurante();
+				tipoRestaurante.setIdTipoRestaurante(rs.getInt("idTipoRestaurante"));
+
+				restaurantes.add(restaurante);
+			}
+		}
+
+		return restaurantes;
 	}
 
 	@Override

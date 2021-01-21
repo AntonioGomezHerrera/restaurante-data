@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -138,6 +139,25 @@ class RestauranteDAOImplTest {
 			
 			assertTrue(eliminado > 0);
 			System.out.println("Se elimino el Restaurante de forma exitosa");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void testConsultarExitoso() {
+		RestauranteDAOImpl restauranteDAOImpl = new RestauranteDAOImpl();
+		
+		try {
+			List<Restaurante> restaurantesConsultados = restauranteDAOImpl.consultar();
+			
+			assertTrue(restaurantesConsultados.size() > 0);
+			
+			for (Restaurante restaurante : restaurantesConsultados) {
+				System.out.println("NOMBRE DEL RESTAURANTE: " + restaurante.getNombre());
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

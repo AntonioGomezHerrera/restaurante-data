@@ -25,7 +25,7 @@ public class TipoRestauranteDAOImpl implements TipoRestauranteDAO {
 			ConnectionFactory.conectar();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			System.err.println("Error de bd: " + e.getMessage());
+			System.err.println("Error de Base de datos: " + e.getMessage());
 		}
 	}
 

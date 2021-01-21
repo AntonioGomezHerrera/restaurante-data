@@ -38,8 +38,13 @@ public class RestauranteDAOImpl implements RestauranteDAO {
 
 	@Override
 	public int actualizar(Restaurante restaurante) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "update restaurante set nombre = '" + restaurante.getNombre() + "', imagen = '"
+				+ restaurante.getImagen() + "', slogan = '" + restaurante.getSlogan() + "', idTipoRestaurante = "
+				+ restaurante.getTipoRestaurante().getIdTipoRestaurante() + ", fechaModificacion = '"
+				+ restaurante.getFechaModificacion() + "', estatus = " + restaurante.isEstatus() + ", idMenu = "
+				+ restaurante.getMenu().getIdMenu() + " where idRestaurante = " + restaurante.getIdRestaurante() + ";";
+		int ejecutado = ConnectionFactory.ejecutarSQL(sql);
+		return ejecutado;
 	}
 
 	@Override

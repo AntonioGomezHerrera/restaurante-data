@@ -125,4 +125,22 @@ class RestauranteDAOImplTest {
 		}
 	}
 
+	@Test
+	void testEliminarExitoso() {
+		int idRestaurante = 20;
+		
+		RestauranteDAOImpl restauranteDAOImpl = new RestauranteDAOImpl();
+		try {
+			
+			assertTrue(idRestaurante == 20);
+			
+			int eliminado = restauranteDAOImpl.eliminar(idRestaurante);
+			
+			assertTrue(eliminado > 0);
+			System.out.println("Se elimino el Restaurante de forma exitosa");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

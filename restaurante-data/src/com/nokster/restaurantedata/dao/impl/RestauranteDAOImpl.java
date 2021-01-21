@@ -49,8 +49,9 @@ public class RestauranteDAOImpl implements RestauranteDAO {
 
 	@Override
 	public int eliminar(int idRestaurante) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "DELETE FROM restaurante where idRestaurante = "+ idRestaurante +"";
+		int ejecutado = ConnectionFactory.ejecutarSQL(sql);
+		return ejecutado;
 	}
 
 	@Override
